@@ -206,3 +206,106 @@ echo $n; // 3
 ```
 
 `$n` começou o programa com o valor `0` e nós falamos pro interpretador: *__enquanto__ (`while`) `$n` for menor (`<`) que o valor `3`*, no bloco do `while` nós incrementamos o valor de `$n`. Na primeira vez o `$n` é `0`, então a condição é verdadeira (`0` é menor que `3`) o bloco é executado e incrementa o valor de `$n` que agora é `1`, ainda é menor que `3`, então vai executaor o bloco de novo que por sua vez vai incrementar de novo e assim por diante até que `$n` seja `3`... `3` não é menor que `3`, `3` é **igual** a `3`, então o bloco ao invés de ser executado ele é pulado e chegamos no `echo $n` que vai imprimir o valor `3` de `$n`.
+
+O `for` é uma estrutura de repetição como o `while`, mas um pouquinho mais poderosa. Nela a gente informa um inicializador, uma condição e uma expressão pra ser executação no fim de cada iteração/cada volta.
+
+```php
+<?php
+for ($i = 0; $i < 3; $i++) {
+    echo $i;
+}
+```
+
+Para (`for`) `$i` igual a `0`, enquanto `$i` for menor que `3`, incremente (`++`) `$i`.
+
+## Array
+
+Os arrays são estruturas de dados para coleções e conjuntos. Se você precisar de uma lista de nomes, ao invés de um nome só, ficaria:
+
+```php
+<?php
+$names = ["Leo", "Alice", "Bob"];
+print_r($names);
+```
+
+Os arrays são delimitados por colchetes `[` `]` e os valores dentro dele são separados por vígula.
+
+Note que no resultado desse programa:
+
+```
+Array
+(
+    [0] => Leo
+    [1] => Alice
+    [2] => Bob
+)
+```
+
+Tem esses valores antes do símbolo `=>`, esses valores são as chaves do array, no caso de uma lista, essas chaves são os índices, uma lista é um *index-based array*, ou seja, um array baseado em índices numéricos.
+
+A gente pode percorrer a estrutuda de dados da lista usando o `foreach`:
+
+```php
+<?php
+$names = ["Leo", "Alice", "Bob"];
+
+foreach ($names as $name) {
+    echo $name;
+}
+```
+
+Ou seja, **para cada** (`foreach`) um dos nomes (`$names`), pegue o valor **como** (`as`) nome (`$name`) e execute o bloco. No caso, o bloco invoca o comando `echo` passando a variável `$name` para imprimir os nomes na tela.
+
+Arrays também pode ser associativos e ter strings ao invés de inteiros (`int`) como chave:
+
+```php
+<?php
+$dev = [
+  'name' => 'Leo',
+  'age' => 18,
+];
+
+print_r($dev);
+```
+
+Note que agora definimos uma chave e um valor, ao invés de só um valor:
+
+```
+Array
+(
+    [name] => Leo
+    [age] => 18
+)
+```
+
+O no resultado do programa, vemos que ao invés de `0` e `1`, temos as chaves `name` e `age` que haviamos definido.
+
+Para acessar o valor de uma chave diretamente, basta usar o nome da chave como string entre colchetes:
+
+```php
+echo $dev['name']; // Leo
+```
+
+ou
+
+```php
+echo $dev['age']; // 28
+```
+
+Você também pode ter arrays dentro de arrays misturando *index-based* (listas) com *key-based* associativo:
+
+```php
+$devs = [
+  ['name' => 'Leo', 'age' => 28],
+  ['name' => 'Alice', 'age' => 29],
+  ['name' => 'Bob', 'age' => 30],
+];
+```
+
+É possível acessar elementos de uma lista diretamente, como fizemos no array associativo, passando qual índice você quer acessar, mas nesse caso como inteiro, então sem as aspas:
+
+```php
+print_r($devs[0]);
+```
+
+As listas são *zero-based*, o primeiro índice é o `0`, não o 1.
