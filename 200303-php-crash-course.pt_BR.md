@@ -1,4 +1,14 @@
-# PHP Crash Course (curso rápido)
+# PHP Crash Course (Curso Rápido)
+
+A ideia inicial desse markdown é virar um roteiro para uma série de pequenos vídeos, então algumas coisas podem parecer muito superficiais porque são tópicos para recordação durante a gravação, mas prometo fazer o máximo para que também vire uma espécie de mega artigo sobre o PHP (como o [PHP: The Right Way](https://phptherightway.com/)), até porque pode ser um documento vivo que se atualiza conforme o PHP e seu ecossistema também se atualizam.
+
+## Contribua
+
+Issues e PR's são muito bem-vindas! Desde uma seção nova, uma ordenação diferente, uma corração ortográfica... sinta-se à vontade para contribuir ou interagir de alguma forma ;)
+
+## Introdução
+
+O PHP é uma linguagem multi-paradigma e de propósito geral, mas que se da muito bem na web, especificamente no lado do servidor (server-side), sendo responsável principalmente por backends e APIs que incluem: acesso a bancos de dados, servidores TCP, websockets, chats, comunicação em tempo-real, gerenciamento de filas, comunicação com outras APIs e por aí vai um mundão de coisa que acontece em um servidor. **A última versão estável é a 7.4** e é a que o curso vai usar para ensina-la.
 
 ## Ambiente
 
@@ -114,7 +124,7 @@ echo $n; // 3
 
 ## Variáveis
 
-As variáveis servem para armazenar valores em memória e poder reaproveita-los durante o programa. Elas são definidas usando o símbolo de dólar `$` seguido de algum identificado, por exemplo, uma variável para armazenar um nome:
+As variáveis servem para armazenar valores em memória e poder reaproveita-los durante o programa. Elas são definidas usando o símbolo de dólar `$` seguido de um identificador e uma atribuição representada pelo símbolo de igual (`=`), por exemplo, uma variável para armazenar um nome:
 
 ```php
 <?php
@@ -309,3 +319,122 @@ print_r($devs[0]);
 ```
 
 As listas são *zero-based*, o primeiro índice é o `0`, não o 1.
+
+## Funções
+
+Por enquanto nós só fizemos programas lineares, começa na primeira linha, vai até o fim e maravilha. Já é possível fazer pequenos scripts dessa forma, mas e se precisarmos repetir trechos de códigos similares? Aí vem as funções e algumas noções de reaproveitamenteo de código, elas encapsulam o comportamento que você programou numa estrutura que pode ser chamada diversas vezes, como fizemos com o `print_r` anteriormente:
+
+```php
+<?php
+
+function say_hello()
+{
+  echo "Hello, World!";
+}
+
+say_hello(); // Hello, World!
+say_hello(); // Hello, World!
+```
+
+As funções podem receber parâmetros diferentes para reaproveitar um mesmo comportamento em dados diferentes:
+
+```php
+<?php
+
+function say_hello($name)
+{
+  echo "Hello, $name!";
+}
+
+say_hello("Leo"); // Hello, Leo!
+say_hello("Alice"); // Hello, Alice!
+say_hello("Bob"); // Hello, Bob!
+```
+
+Lembrei que falei sobre PHP ter tipagem dinâmica? Bom, pras variáveis é verdade, mas para as funções (e outros que veremos mais pra frente) é possível sim definir **estaticamente** o tipo dos seus argumentos e o tipo do retorno da função.
+
+```php
+function say_hello(string $name): void
+{
+  echo "Hello, $name!";
+}
+```
+
+Agora essa função está mais estrita sobre o tipo de parâmetro que ela pode receber, apenas `string`s vão funcionar, se você passar um `int` (inteiro) vai dar um erro e isso é muito legal porque trás mais garatias pro seu código e evita os temidos *bugs* que você só encontraria quando rodasse o projeto.
+
+Para que esse PHP mais legal, fechadinho e estrito, funcione, você precisa habilitar em cada arquivo com `declare(strict_types=1)`. Só colocar logo depois do `<?php` (veremos a seguir).
+
+`void` siginifica que a função não vai retornar nada, mas o que é esse retorno?
+
+### Retorno
+
+As funções podem receber parâmetros e também retornar um valor, isso trás mais utilidade e reaproveitamento para elas. Vamos para uma função de soma:
+
+```php
+<?php declare(strict_types=1); // Olha ele aqui
+
+function sum(int $a, int $b): int
+{
+  return $a + $b;
+}
+
+echo sum(1, 1); // 2
+```
+
+Recebe dois inteiros (`int`) e retorna a soma deles. Agora pode não parecer muito útil, mas imagina que você pode ter uma equação ou algoritimo mais complexo dentro de uma função.
+
+```php
+<?php declare(strict_types=1); // Olha ele aqui
+
+function average(int $a, int $b): int
+{
+  return ($a + $b) / 2;
+}
+
+echo average(2, 4); // 3
+echo average(3, 7); // 5
+```
+
+## Closures
+
+As Closures são funções anônimas (funções sem nome):
+
+```php
+<?php declare(strict_types=1);
+
+$sum = function (int $a, int $b): int {
+  return $a + b;
+};
+
+$mul = function (int $a, int $b): int {
+  return $a * $b;
+};
+```
+
+Duas Closures, uma para soma e uma para multiplicação e ambas atribuidas às variáveis `$sum` e `$mul` respectivamente. A atribuição às variáveis, permite que as funções anônimas sejam invocadas mesmo sem sabermos seu nome, usuamos então o nome da variável, com o sinal de dólar mesmo:
+
+```php
+echo $sum(2, 2); // 4
+echo $mul(3, 3); // 9
+```
+
+As Closures tem propriedades como **First-class** (podem ser atribuídas a variáveis) e **High-order** (podem ser parâmetros ou retornos de outras funções), são atributos essênciais para **Programação Funcional**.
+
+### First-class
+
+```php
+```
+
+### High-order
+
+```php
+```
+
+### Arrow functions
+
+```php
+```
+
+## Classes
+
+Os arrays associativos são mais interessantes quando precisamos de uma estrutura de dados conhecida como HashMap. Para o exemplo anterior o ideal é trazer mais semântica com mais tipos usando o recurso de classes e aqui daremos também nossa primeira espiada na famosa **Orientação a Objetos**.
