@@ -64,3 +64,54 @@ echo "World!";
 Mas, hey, pera aí! **Str**... o quê que você falou?
 
 ## Tipos
+
+**String** é um tipo no PHP. Você de repente até já ouviu por aí que PHP não tem tipo, não é bem assim, PHP é uma linguagem **dinâmicamente tipada** e com **tipagem fraca**, mas os tipos estão lá.
+
+ `String`s são usadas para representar textos, como o `"Hello, World!"`. Você define qual é esse texto delimitando-o com aspas duplas ou simples.
+
+Além das `String`s também tem: `int` para representar números inteiros como `1`, `2`, `3` etc; `float` pra representar números racionais usando um ponto flutuante, ou seja, ½ fica `0.5`; `bool` para representar valores *Booleanos* como `true` ou `false` e `array` para representar coleções/conjuntos.
+
+## Variáveis
+
+As variáveis servem para armazenar valores em memória e poder reaproveita-los durante o programa. Elas são definidas usando o símbolo de dólar `$` seguido de algum identificado, por exemplo, uma variável para armazenar um nome:
+
+```php
+<?php
+$name = "Leo";
+echo $n;
+```
+
+Esse programa vai imprimir `Leo` na tela, ou seja, o valor da variável passada para o comando `echo`.
+
+Variáveis podem armazenar outros tipos além de `String`s, por exemplo, idade (*age*) como um número inteiro:
+
+```php
+<?php
+
+$name = "Leo";
+$age = 28;
+
+echo $name;
+echo $age;
+```
+
+O resultado desse programa não ficou muito legal, certo? Ficou `Leo28` tudo junto. Como a gente pode incluir uma quebra de linha entre o nome e a idade ou melhor, colocar as legendas "Nome:" e "Idade:" antes desses valores?
+
+As `String`s tem uma propriedade especial, elas podem interpolar com as variáveis e usar o valor dessas variáveis:
+
+```php
+<?php
+
+$name = "Leo";
+$age = 28;
+
+echo "Nome: $name Idade: $age";
+```
+
+Agora o `echo` é feito com uma nova `string` e essa nova `string` interpola os valores de `$name` (nome) e `$age` (idade).
+
+Para incluir uma quebra de linha, você pode incluir o caractere especial `\n`:
+
+```php
+echo "Nome: $name\nIdade: $age";
+```
