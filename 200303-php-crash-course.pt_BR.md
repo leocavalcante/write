@@ -71,6 +71,47 @@ Mas, hey, pera aí! **Str**... o quê que você falou?
 
 Além das `String`s também tem: `int` para representar números inteiros como `1`, `2`, `3` etc; `float` pra representar números racionais usando um ponto flutuante, ou seja, ½ fica `0.5`; `bool` para representar valores *Booleanos* como `true` ou `false` e `array` para representar coleções/conjuntos.
 
+## Operadores
+
+Você pode performar operações nesses diferentes tipos de valores, os exemplos mais comuns são os operadores aritiméticos, como somar dois inteiros:
+
+```php
+<?php
+echo 2 + 2;
+```
+
+E você pode "somar" (concatenar) duas strings com o ponto:
+
+```php
+<?php
+echo "Hello," . "World!":
+```
+
+Incrementar e decrementar inteiros com `++` e `--` respectivamente:
+
+```php
+<?php
+$n = 1;
+$n++;
+echo $n; // 2
+```
+
+```php
+<?php
+$n = 2;
+$n--;
+echo $n; // 1
+```
+
+Se quiser incrementar ou decrementar por um valor maior que 1, pode usar `+=` e `-=`:
+
+```php
+<?php
+$n = 1;
+$n += 2;
+echo $n; // 3
+```
+
 ## Variáveis
 
 As variáveis servem para armazenar valores em memória e poder reaproveita-los durante o programa. Elas são definidas usando o símbolo de dólar `$` seguido de algum identificado, por exemplo, uma variável para armazenar um nome:
@@ -115,3 +156,38 @@ Para incluir uma quebra de linha, você pode incluir o caractere especial `\n`:
 ```php
 echo "Nome: $name\nIdade: $age";
 ```
+
+## Estruturas para controle de fluxo de dados
+
+Aqui entra a tal da "lógica de programação", as famosas estruturas `if..else`, `for`, `foreach`, `while`, `switch` etc.
+
+A mais comum é a `if..else`, é quando você começa a criar condicionais e ganha poder de expressão para computações um pouco mais complexas usando as variáveis. Uma condição, por exemplo: *se a idade for maior ou igual a 18, então pode dirigir* ficaria:
+
+```php
+<?php
+
+$name = "Leo";
+$age = 28;
+
+if ($age >= 18) {
+  echo "$name pode dirigir";
+} else {
+  echo "$name não pode dirigir";
+}
+```
+
+Como 28 é maior que 18, o código executado é o que está entre o primeiro bloco delimitado pelas chaves `{` `}`. Mude a idade para um valor menor que 18 e veja que o segundo bloco que será executado, o bloco do `else`.
+
+Você também pode encadear sequências de condições na mesma estrutura, por exemplo:
+
+```php
+if ($age >= 18) {
+  echo "Pode dirigir e votar";
+} else if ($age >= 16) {
+  echo "Pode apenas votar";
+} else {
+  echo "Não pode nem dirigir nem votar";
+}
+```
+
+Outras condições mais comuns também podem ser `==`, `<`, `<=` e `!=`.
