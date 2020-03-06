@@ -422,18 +422,37 @@ As Closures tem propriedades como **First-class** (podem ser atribuídas a vari�
 
 ### First-class
 
+É o que vimos anteriormente , uma função sendo atribuida à uma variável. Seguindo a linha de operações aritiméticas, uma função subtração ficaria:
+
 ```php
+$sub = function (int $a, int $b): int {
+    return $a - $b;
+};
 ```
 
 ### High-order
 
+Uma função recebendo ou retornando outra função parece coisa de louco no inicio, mas é algo extremamente poderoso para composição de novas funcionalidades a partir de funcionalidades já existentes.
+
 ```php
+$double = function (int $val) use ($mul): int {
+    return $mul($val, 2);
+};
+
+echo $double(2); // 4
 ```
+
+As Closures não tem acesso ao scopo antecessor automaticamente, por isso a adição do `use ($mul)`, para a Closure saber que a outra Closure atribuida a variável `$mul` existe. Nesses casos simples, isso pode ser evitado com arrow-functions:
 
 ### Arrow functions
 
+As arrow-functions são simplesmente formas reduzidas de escrever Closures:
+
 ```php
+$double = fn(int $val): int => $mul($val, 2);
 ```
+
+Note como a sintaxe do nosso programa fica muito mais simples e elegante.
 
 ## Classes
 
