@@ -13,3 +13,4 @@
 | User authentication with local email and password or plenty of providers like Facebook, Twitter, Google and Instagram | |
 | Plug-in based architecture | Marketplace ecosystem basically nonexistent yet |
 | Media manager with object storage (S3) support | |
+| React Admin Data Provider | |
